@@ -18,6 +18,40 @@ Algoritma adalah satu atau lebih fungsi dan/atau kelas yang:
 - melakukan beberapa internal kalkulasi atau manipulasi data;
 - mengembalikan satu atau lebih nilai hasil;
 
+## Unittesting
+
+Kami menggunakan kustom unittesting yang sudah terkonfigurasi di `config.nims` yang dimana tiap file kamu hanya menambahkan `suite test dari nim sebagai contoh`
+
+```nim
+
+# unittesting ini ditambahkan di akhir setelah inisialisasi
+# fungsi sudah dibuat
+# ketika file dijalankan sebagain main
+when isMainModule:
+    # import lib unittest
+    import std/[unittest]
+    
+    suite "Testing Beberapa Kasus":
+        test "test fungsi pertama":
+            check:
+                testFungsiPertama(10) == 10
+                testFungsiKedua(1) != 2
+    
+    suite "Testing Kasus Lain":
+        test "test fungsi lain":
+            check:
+                testFungsiPertama(20) != 300
+
+        test "test fungsi jika valuenya lain":
+            doAssertRaises(ValueError):
+                discard testFungsiPertama(3.0)
+```
+Setelah itu lakukan perintah
+```
+nim config.nims
+nim test
+```
+
 ## Tambahan Perubahan
 
 Jika ingin menambahkan algoritma atau *script* Nim yang sederhana atau menambahkan kode yang sederhana, kamu bisa menambahkan perubahan di folder `other`. Jika terdapat beberapa *file*, sebaiknya *file-file* tersebut ke dalam folder sesuai dengan nama *script* tersebut sebagai contoh:
