@@ -13,7 +13,7 @@ func absVal*[T: SomeInteger](angka: T): Natural = (if angka <
     0: -angka else: angka)
 
 func absMin*(x: openArray[int]): Natural {.raises: [ValueError].} =
-  # mengembalikan nilai element terkecil dari nilai absolute dalam sebuah sekuens
+  # mengembalkan nilai element terkecil dari nilai absolute dalam sebuah sekuens
   if x.len == 0:
     raise newException(ValueError, "Tidak bisa menemukan nilai absolut terkecil")
   result = absVal(x[0])
@@ -56,7 +56,7 @@ when isMainModule:
     test "test fungsi absMax":
       check:
         absMax(@[0, 5, 1, 11]) == 11
-        absMax(@[-1, 2, -3]) = 3
+        absMax(@[-1, 2, -3]) == 3
 
     test "`absMax` jika sekuensnya kosong":
       doAssertRaises(ValueError):
