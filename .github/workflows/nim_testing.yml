@@ -1,0 +1,29 @@
+name: nim testing
+
+on: [push, pull_request]
+
+jobs:
+  nim_testing:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        nim-version:
+          - '2.0.8'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: ${{ matrix.nim-version }}
+
+      - name: display version nim
+        run: |
+          nim --version
+      - name: testing nim
+        run: |
+          nim test
