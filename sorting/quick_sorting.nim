@@ -21,8 +21,6 @@ proc sort[T](a: var openArray[T], low, high: int) =
     sort(a, pi + 1, high)
 
 proc quickSorting*[T](a: var openArray[T]) =
-  if a.len == 0:
-    raise newException(ValueError, "Nilai Tidak Boleh Kosong")
   sort(a, 0, a.high)
 
 when isMainModule:
